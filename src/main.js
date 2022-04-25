@@ -5,8 +5,8 @@ const publicPath = path.resolve(__dirname, '../public');
 const http = require('http');
 const io = require('socket.io');
 
-const ContenedorMemoria = require('../contenedores/ContenedorMemoria.js')
-const ContenedorArchivo = require('../contenedores/ContenedorArchivo.js')
+const products_api = require('../api/products_api.js')
+const messages_api = require('../api/messages_api.js')
 
 //--------------------------------------------
 // instancio servidor, socket y api
@@ -16,8 +16,8 @@ const app = express()
 const myServer = http.Server(app);
 const myWSServer = io(myServer);
 
-const productosApi = new ContenedorMemoria()
-const mensajesApi = new ContenedorArchivo('message_log.json')
+const productosApi = new products_api()
+const mensajesApi = new messages_api('message_log.json')
 
 //--------------------------------------------
 // configuro el socket
